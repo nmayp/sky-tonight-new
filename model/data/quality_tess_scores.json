@@ -1,0 +1,206 @@
+{
+ "photometers": 76,
+ "train_rows": 167051,
+ "test_rows": 48649,
+ "test_nights": 302,
+ "baseline": "per-photometer 90th percentile of moonless forecast-clear nights, 2023-2025",
+ "dimming": {
+  "climatology (photometer x month)": {
+   "mae": 1.165974805181338,
+   "rmse": 1.427076617654451,
+   "bias": -0.008224283985868818,
+   "n": 48649,
+   "mean_obs": 1.4995340130446613
+  },
+  "moon + calendar + place baseline": {
+   "mae": 0.5308550766064004,
+   "rmse": 0.754393121927948,
+   "bias": 0.026353440078796773,
+   "n": 48649,
+   "mean_obs": 1.4995340130446613
+  },
+  "+ weather (v1 inputs and extra)": {
+   "mae": 0.3807346570033364,
+   "rmse": 0.5729655199407816,
+   "bias": 0.023200421504874058,
+   "n": 48649,
+   "mean_obs": 1.4995340130446613
+  },
+  "+ dust/aerosol": {
+   "mae": 0.38009690152312803,
+   "rmse": 0.5726333611187195,
+   "bias": 0.024688447843021336,
+   "n": 48649,
+   "mean_obs": 1.4995340130446613
+  },
+  "+ upper winds": {
+   "mae": 0.3802545512160014,
+   "rmse": 0.5729853751523809,
+   "bias": 0.022151935622724057,
+   "n": 48649,
+   "mean_obs": 1.4995340130446613
+  }
+ },
+ "dark_ok": {
+  "climatology (photometer x month)": {
+   "brier": 0.21884452051661973,
+   "logloss": 0.6317423863704079,
+   "auc": 0.6118173856175418,
+   "ece": 0.024244352720887652,
+   "n": 48649,
+   "base_rate": 0.34181586466319963
+  },
+  "moon + calendar + place baseline": {
+   "brier": 0.12425877013797802,
+   "logloss": 0.36849894434591735,
+   "auc": 0.9001825318223557,
+   "ece": 0.03979538358928913,
+   "n": 48649,
+   "base_rate": 0.34181586466319963
+  },
+  "+ weather (v1 inputs and extra)": {
+   "brier": 0.08760990729984608,
+   "logloss": 0.2781409694802753,
+   "auc": 0.9484284526753136,
+   "ece": 0.024900074826297955,
+   "n": 48649,
+   "base_rate": 0.34181586466319963
+  },
+  "+ dust/aerosol": {
+   "brier": 0.0863435097053483,
+   "logloss": 0.27454660190118485,
+   "auc": 0.9498670108123309,
+   "ece": 0.02453826550935652,
+   "n": 48649,
+   "base_rate": 0.34181586466319963
+  },
+  "+ upper winds": {
+   "brier": 0.08635930628535786,
+   "logloss": 0.27477674566425925,
+   "auc": 0.9497102151674777,
+   "ece": 0.023841361957593118,
+   "n": 48649,
+   "base_rate": 0.34181586466319963
+  }
+ },
+ "params": {
+  "max_depth": 6,
+  "learning_rate": 0.03,
+  "max_iter": 500,
+  "min_samples_leaf": 150,
+  "l2_regularization": 2.0
+ },
+ "dimming_mae_ci": {
+  "climatology (photometer x month)": [
+   1.1127002991344,
+   1.222705245886863
+  ],
+  "moon + calendar + place baseline": [
+   0.5134304321246211,
+   0.5502411404149136
+  ],
+  "+ weather (v1 inputs and extra)": [
+   0.3680136947580984,
+   0.3949861040900298
+  ],
+  "+ dust/aerosol": [
+   0.3674134564771731,
+   0.3948867542841612
+  ],
+  "+ upper winds": [
+   0.36745195658056234,
+   0.3948980497293686
+  ]
+ },
+ "dimming_mae_diff": {
+  "+ weather (v1 inputs and extra)-moon + calendar + place baseline": {
+   "point": -0.150120419603064,
+   "ci": [
+    -0.1646201508003022,
+    -0.1360309677969754
+   ],
+   "share_below_zero": 1.0
+  },
+  "+ dust/aerosol-moon + calendar + place baseline": {
+   "point": -0.15075817508327238,
+   "ci": [
+    -0.1654132349079061,
+    -0.13735148874384215
+   ],
+   "share_below_zero": 1.0
+  },
+  "+ upper winds-moon + calendar + place baseline": {
+   "point": -0.15060052539039903,
+   "ci": [
+    -0.1651222830112686,
+    -0.1370533878419642
+   ],
+   "share_below_zero": 1.0
+  },
+  "moon + calendar + place baseline-climatology (photometer x month)": {
+   "point": -0.6351197285749375,
+   "ci": [
+    -0.6925497096945322,
+    -0.5831082344160844
+   ],
+   "share_below_zero": 1.0
+  }
+ },
+ "dark_ok_brier_ci": {
+  "climatology (photometer x month)": [
+   0.2079076697292692,
+   0.2297751582276569
+  ],
+  "moon + calendar + place baseline": [
+   0.1142711596628639,
+   0.13459886973014656
+  ],
+  "+ weather (v1 inputs and extra)": [
+   0.08011033165973139,
+   0.09467058109780106
+  ],
+  "+ dust/aerosol": [
+   0.07886816389429162,
+   0.0932797270243686
+  ],
+  "+ upper winds": [
+   0.07921605862422779,
+   0.09328485463805389
+  ]
+ },
+ "dark_ok_brier_diff": {
+  "+ weather (v1 inputs and extra)-moon + calendar + place baseline": {
+   "point": -0.03664886283813197,
+   "ci": [
+    -0.04207672971250572,
+    -0.03143432065371417
+   ],
+   "share_below_zero": 1.0
+  },
+  "+ dust/aerosol-moon + calendar + place baseline": {
+   "point": -0.03791526043262977,
+   "ci": [
+    -0.0436261448110138,
+    -0.0326338897100025
+   ],
+   "share_below_zero": 1.0
+  },
+  "+ upper winds-moon + calendar + place baseline": {
+   "point": -0.037899463852620205,
+   "ci": [
+    -0.04356142283728808,
+    -0.03260298888798369
+   ],
+   "share_below_zero": 1.0
+  },
+  "moon + calendar + place baseline-climatology (photometer x month)": {
+   "point": -0.09458575037864166,
+   "ci": [
+    -0.10087749801200478,
+    -0.08838265153039475
+   ],
+   "share_below_zero": 1.0
+  }
+ },
+ "dark_ok_base_rate": 0.34181586466319963
+}

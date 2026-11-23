@@ -1,0 +1,41 @@
+{
+ "main": {
+  "n": 52,
+  "nights": 9,
+  "brier_model": 0.389,
+  "brier_raw": 0.268,
+  "brier_constant": 0.149,
+  "sure": 44,
+  "hits_model": 13,
+  "hits_raw": 23
+ },
+ "sensitivity_score_apo_rule": {
+  "n": 52,
+  "nights": 9,
+  "brier_model": 0.414,
+  "brier_raw": 0.267,
+  "brier_constant": 0.149,
+  "sure": 44,
+  "hits_model": 14,
+  "hits_raw": 24
+ },
+ "auc_clear_vs_cloudy": {
+  "model": 0.25,
+  "raw": 0.38,
+  "forecast_cloud_inverted": 0.38
+ },
+ "bootstrap_by_night_mean_and_95pct": {
+  "model minus constant": [
+   0.245,
+   0.11,
+   0.404
+  ],
+  "model minus raw": [
+   0.121,
+   0.028,
+   0.202
+  ]
+ },
+ "mean_p_model": 0.339,
+ "mean_observed_score": 0.75
+}

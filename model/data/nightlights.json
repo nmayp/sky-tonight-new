@@ -1,0 +1,37 @@
+{
+ "barcelona": {
+  "within_5km": 180.4,
+  "within_25km": 99.5,
+  "within_60km": 53.3
+ },
+ "montsec": {
+  "within_5km": 18.1,
+  "within_25km": 21.5,
+  "within_60km": 29.2
+ },
+ "javalambre": {
+  "within_5km": 22.5,
+  "within_25km": 22.4,
+  "within_60km": 28.1
+ },
+ "calar_alto": {
+  "within_5km": 17.6,
+  "within_25km": 26.4,
+  "within_60km": 34.7
+ },
+ "sierra_nevada": {
+  "within_5km": 29.2,
+  "within_25km": 36.6,
+  "within_60km": 33.3
+ },
+ "teide": {
+  "within_5km": 48.7,
+  "within_25km": 63.2,
+  "within_60km": 20.9
+ },
+ "roque": {
+  "within_5km": 14.4,
+  "within_25km": 13.1,
+  "within_60km": 6.9
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "n": 52,
+ "nights": 9,
+ "brier_v2": 0.203,
+ "brier_calibrated_raw_forecast": 0.239,
+ "brier_constant_guess": 0.149,
+ "mean_p_v2": 0.563,
+ "mean_read": 0.75
+}

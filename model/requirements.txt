@@ -1,0 +1,10 @@
+astropy
+sgp4
+numpy
+scipy
+pandas
+pillow
+requests
+scikit-learn
+pytest
+eccodes

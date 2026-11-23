@@ -1,0 +1,61 @@
+# Daily refresh of public/sky/forecast_v2.json. NOT ACTIVE: this is only a template.
+# To switch it on, copy it to .github/workflows/sky-refresh.yml in the web repository.
+#
+# What it does: takes the 12 UT NOAA GFS run (published about 4.5 hours later), the CAMS dust and aerosol fields from
+# Open-Meteo, scores the saved v2 model on every grid cell of public/sky/grid.json and writes forecast_v2.json.
+# Needs: no secrets (model repo is public, NOAA bucket needs no key).
+# Open-Meteo's air-quality API is free for non-commercial use with attribution (a few requests per run).
+# Runtime is about 5 to 10 minutes.
+name: sky-refresh
+on:
+  schedule:
+    - cron: "50 17 * * *"      # 17:50 UTC: the 12 UT GFS run is complete (f240 is out about 4.5 hours after the cycle)
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sky-refresh
+  cancel-in-progress: false
+jobs:
+  forecast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: nmayp/sky-tonight-new
+          path: model-src
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: model-src/sky-tonight/model/requirements.txt
+      - name: install
+        run: pip install -q -r model-src/sky-tonight/model/requirements.txt
+      - name: forecast
+        working-directory: model-src/sky-tonight/model
+        run: >
+          python -m sky_tonight.quality.snapshot_v2
+          --grid "$GITHUB_WORKSPACE/public/sky/grid.json"
+          --model data/quality_v2.pkl
+          --out "$GITHUB_WORKSPACE/public/sky/forecast_v2.json"
+      - name: sanity check
+        run: |
+          python3 - <<'PY'
+          import json
+          f = json.load(open("public/sky/forecast_v2.json"))
+          g = json.load(open("public/sky/grid.json"))
+          assert len(f["valid"]) >= 40 and len(f["p"]) == len(f["valid"]) == len(f["c"]) == len(f["h"])
+          assert all(len(r) == len(g["lat"]) for r in f["p"] + f["c"] + f["h"])
+          assert all(0 <= v <= 100 for r in f["p"] + f["h"] for v in r) and all(0 <= v <= 80 for r in f["c"] for v in r)
+          print("cycle", f["cycle"], "aerosol", f.get("aerosol_inputs"))
+          PY
+      - name: commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add public/sky/forecast_v2.json
+          git diff --cached --quiet && exit 0
+          git commit -m "sky: forecast_v2 refresh"
+          git push

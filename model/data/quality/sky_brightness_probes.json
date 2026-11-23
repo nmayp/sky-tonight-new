@@ -1,0 +1,27 @@
+{
+ "checked_utc": "2026-11-22",
+ "period": "2023-01..2026-10",
+ "aeronet": {
+  "source": "https://aeronet.gsfc.nasa.gov (Web Data Service v3, level 1.5 daily mean AOD 500 nm)",
+  "sites_listed_in_spain_and_canaries": 53,
+  "sites_with_data": 27,
+  "sites_ge_12_months": 25,
+  "sites_ge_24_months": 21,
+  "sites_ge_36_months": 18,
+  "site_days": 21555,
+  "note": "Sun photometers: daytime only, so a daily mean AOD is a proxy for the air on the following night, not a night measurement. Not modelled."
+ },
+ "tess_w": {
+  "source": "https://tess.dashboards.stars4all.eu (Stars4All TESS-W photometers, open database)",
+  "photometers_labelled_spain": 231,
+  "with_any_data": 194,
+  "ge_12_months_ge_1000_readings": 120,
+  "ge_24_months": 91,
+  "ge_36_months": 70,
+  "active_in_a_typical_month": "about 85-110",
+  "modelled": "see quality_tess_scores.json"
+ },
+ "globe_at_night_sqm": {
+  "result": "Globe at Night SQM-network data are served by the same open database (datasource 'sqm-network'); not queried because TESS-W already meets the threshold and has far more Spanish stations."
+ }
+}

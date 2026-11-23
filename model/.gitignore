@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+data/_recent_metar.csv
+data/live.sqlite
+.pytest_cache/
+logdata/
+data/allsky/
+data/*_local.log
+data/webcams/
+data/collect.log
